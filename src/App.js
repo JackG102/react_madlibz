@@ -1,15 +1,16 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import MadlibForm from './components/MadlibForm';
 
 const App = () => {
-  const [madLib, setMadlib] = useState([]);
+  const [madlib, setMadlib] = useState([]);
 
   useEffect(() => {
     const fetchMadlib = async () => {
       const { data } = await axios.get('http://madlibz.herokuapp.com/api/random', {
         params: {
           minlength: 2,
-          maxlength: 25,
+          maxlength: 15,
         }
       });
       console.log(data);
@@ -20,7 +21,10 @@ const App = () => {
   }, []);
 
   return (
-    <h1>Madlibz App</h1>
+    <>
+      <h1>Madlibz App</h1>
+      <MadlibForm blanks={madlib.blanks}/>
+    </>
   );
 };
 
