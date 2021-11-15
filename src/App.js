@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 const App = () => {
+  const [madLib, setMadlib] = useState([]);
 
   useEffect(() => {
     const fetchMadlib = async () => {
@@ -12,6 +13,7 @@ const App = () => {
         }
       });
       console.log(data);
+      setMadlib(data);
     }
 
     fetchMadlib();
